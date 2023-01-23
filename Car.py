@@ -2,10 +2,10 @@ import os
 from dotenv import load_dotenv
 
 import manage_log
+load_dotenv()
 
 
 class Car:
-    load_dotenv()
     fuel = None
     consumption_fuel = None
     money = None

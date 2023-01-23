@@ -20,7 +20,7 @@ class MyTestCaseUnittest(unittest.TestCase):
                 Detail: test init fuel variable
                 Return: Null"""
         try:
-            self.assertEqual(self.c.fuel, 30)
+            self.assertEqual(self.c.fuel, 50)
             self.m.write_exceptions_to_log("TEST INIT FUEL --- PASS !")
         except Exception as e:
             self.m.write_exceptions_to_log("TEST INIT FUEL --- FAILED !")

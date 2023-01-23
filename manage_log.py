@@ -4,6 +4,7 @@ from datetime import datetime
 
 class Manage_log:
     f = None
+    f_e = None
     time = datetime.now().strftime(" %d/%m/%Y %H:%M:%S ")
 
     def open_file(self):
@@ -29,15 +30,15 @@ class Manage_log:
         self.f.write("")
         self.f.flush()
 
-    def write_exceptions_to_log(self, string):
+    def write_exceptions_to_log(self, string_exceptions):
         """Author: Maor Maharizi,
                 Created: 22.01.2023,
                 Detail: write to logs file
                 Return: Null"""
-        self.f = open('logs', "a")
-        self.f.write(string + "" + self.time)
-        self.f.flush()
-        self.f.close()
+        self.f_e = open('logs', "a")
+        self.f_e.write(string_exceptions + "---" + self.time)
+        self.f_e.flush()
+        self.f_e.close()
 
     def close_log_file(self):
         """Author: Maor Maharizi,
