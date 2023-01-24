@@ -36,7 +36,7 @@ class Manage_log:
                 Detail: write to logs file
                 Return: Null"""
         self.f_e = open('logs', "a")
-        self.f_e.write(string_exceptions + "---" + self.time)
+        self.f_e.write("\n"+string_exceptions + "---" + self.time)
         self.f_e.flush()
         self.f_e.close()
 

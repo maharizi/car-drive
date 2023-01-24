@@ -21,9 +21,9 @@ class MyTestCaseUnittest(unittest.TestCase):
                 Return: Null"""
         try:
             self.assertEqual(self.c.fuel, 50)
-            self.m.write_exceptions_to_log("TEST INIT FUEL --- PASS !")
+            self.m.write_exceptions_to_log("TEST INIT FUEL --- PASS ! ")
         except Exception as e:
-            self.m.write_exceptions_to_log("TEST INIT FUEL --- FAILED !")
+            self.m.write_exceptions_to_log("TEST INIT FUEL --- FAILED ! " + str(e))
 
     def test_init_fuel_consumption(self):
         """Author: Maor Maharizi,
@@ -32,9 +32,9 @@ class MyTestCaseUnittest(unittest.TestCase):
                 Return: Null"""
         try:
             self.assertEqual(self.c.consumption_fuel, "1/10")
-            self.m.write_exceptions_to_log("TEST INIT FUEL CONSUMPTION --- PASS !")
+            self.m.write_exceptions_to_log("TEST INIT FUEL CONSUMPTION --- PASS ! ")
         except Exception as e:
-            self.m.write_exceptions_to_log("TEST INIT FUEL CONSUMPTION --- FAILED !")
+            self.m.write_exceptions_to_log("TEST INIT FUEL CONSUMPTION --- FAILED ! " + str(e))
 
     def test_init_money(self):
         """Author: Maor Maharizi,
@@ -43,9 +43,9 @@ class MyTestCaseUnittest(unittest.TestCase):
                 Return: Null"""
         try:
             self.assertEqual(self.c.money, 500)
-            self.m.write_exceptions_to_log("TEST INIT MONEY --- PASS !")
+            self.m.write_exceptions_to_log("TEST INIT MONEY --- PASS ! ")
         except Exception as e:
-            self.m.write_exceptions_to_log("TEST INIT MONEY --- FAILED !")
+            self.m.write_exceptions_to_log("TEST INIT MONEY --- FAILED ! " + str(e))
 
     def test_open_file(self):
         """Author: Maor Maharizi,
@@ -54,9 +54,9 @@ class MyTestCaseUnittest(unittest.TestCase):
                 Return: Null"""
         try:
             self.assertEqual(self.m.open_file(), 1)
-            self.m.write_exceptions_to_log("TEST OPEN FILE --- PASS !")
+            self.m.write_exceptions_to_log("TEST OPEN FILE --- PASS ! ")
         except Exception as e:
-            self.m.write_exceptions_to_log("TEST OPEN FILE --- FAILED !")
+            self.m.write_exceptions_to_log("TEST OPEN FILE --- FAILED ! " + str(e))
 
     def test_drive(self):
         """Author: Maor Maharizi,
@@ -65,9 +65,9 @@ class MyTestCaseUnittest(unittest.TestCase):
                 Return: Null"""
         try:
             self.assertEqual(self.c.start(), 1)
-            self.m.write_exceptions_to_log("TEST DRIVE --- PASS !")
+            self.m.write_exceptions_to_log("TEST DRIVE --- PASS ! ")
         except Exception as e:
-            self.m.write_exceptions_to_log("TEST DRIVE --- FAILED !")
+            self.m.write_exceptions_to_log("TEST DRIVE --- FAILED ! " + str(e))
 
     def test_gear_update(self):
         """Author: Maor Maharizi,
@@ -76,9 +76,9 @@ class MyTestCaseUnittest(unittest.TestCase):
                 Return: Null"""
         try:
             self.assertEqual(self.c.gear_update(20), 1)
-            self.m.write_exceptions_to_log("TEST GEAR UPDATE --- PASS !")
+            self.m.write_exceptions_to_log("TEST GEAR UPDATE --- PASS ! ")
         except Exception as e:
-            self.m.write_exceptions_to_log("TEST GEAR UPDATE --- FAILED !")
+            self.m.write_exceptions_to_log("TEST GEAR UPDATE --- FAILED ! " + str(e))
 
     def test_fuel_charge(self):
         """Author: Maor Maharizi,
@@ -87,6 +87,6 @@ class MyTestCaseUnittest(unittest.TestCase):
                 Return: Null"""
         try:
             self.assertEqual(self.c.fuel_charge(), 1)
-            self.m.write_exceptions_to_log("TEST FUEL CHARGE --- PASS !")
+            self.m.write_exceptions_to_log("TEST FUEL CHARGE --- PASS ! ")
         except Exception as e:
-            self.m.write_exceptions_to_log("TEST FUEL CHARGE --- FAILED !")
+            self.m.write_exceptions_to_log("TEST FUEL CHARGE --- FAILED ! " + str(e))

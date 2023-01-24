@@ -1,8 +1,9 @@
+import dotenv
 import pytest
 import manage_log
 from Car import Car
 
-
+dotenv.load_dotenv()
 m = manage_log.Manage_log()
 
 
@@ -22,9 +23,9 @@ def test_init_fuel(car):
             Return: Null"""
     try:
         assert car.fuel == 50
-        m.write_exceptions_to_log("TEST INIT FUEL --- PASS !")
+        m.write_exceptions_to_log("TEST INIT FUEL --- PASS ! ")
     except Exception as e:
-        m.write_exceptions_to_log("TEST INIT FUEL --- FAILED !", e)
+        m.write_exceptions_to_log("TEST INIT FUEL --- FAILED ! " + str(e))
 
 
 def test_init_fuel_consumption(car):
@@ -34,9 +35,9 @@ def test_init_fuel_consumption(car):
             Return: Null"""
     try:
         assert car.consumption_fuel == "1/10"
-        m.write_exceptions_to_log("TEST INIT FUEL CONSUMPTION--- PASS !")
+        m.write_exceptions_to_log("TEST INIT FUEL CONSUMPTION--- PASS ! ")
     except Exception as e:
-        m.write_exceptions_to_log("TEST INIT FUEL CONSUMPTION--- FAILED !", e)
+        m.write_exceptions_to_log("TEST INIT FUEL CONSUMPTION--- FAILED ! " + str(e))
 
 
 @pytest.mark.skip
@@ -47,9 +48,9 @@ def test_init_money(car):
             Return: Null"""
     try:
         assert car.money == 500
-        m.write_exceptions_to_log("TEST INIT MONEY--- PASS !")
+        m.write_exceptions_to_log("TEST INIT MONEY--- PASS ! ")
     except Exception as e:
-        m.write_exceptions_to_log("TEST INIT MONEY--- FAILED !", e)
+        m.write_exceptions_to_log("TEST INIT MONEY--- FAILED ! " + str(e))
 
 
 def test_open_file(car):
@@ -58,10 +59,10 @@ def test_open_file(car):
             Detail: test open file
             Return: Null"""
     try:
-        assert car.open_file() == 1
-        m.write_exceptions_to_log("TEST OPEN FILE --- PASS !")
+        assert m.open_file() == 1
+        m.write_exceptions_to_log("TEST OPEN FILE --- PASS ! ")
     except Exception as e:
-        m.write_exceptions_to_log("TEST OPEN FILE --- FAILED !", e)
+        m.write_exceptions_to_log("TEST OPEN FILE --- FAILED ! " + str(e))
 
 
 def test_drive(car):
@@ -71,9 +72,9 @@ def test_drive(car):
             Return: Null"""
     try:
         assert car.start() == 1
-        m.write_exceptions_to_log("TEST DRIVE --- PASS !")
+        m.write_exceptions_to_log("TEST DRIVE --- PASS ! ")
     except Exception as e:
-        m.write_exceptions_to_log("TEST DRIVE --- FAILED !", e)
+        m.write_exceptions_to_log("TEST DRIVE --- FAILED ! " + str(e))
 
 
 def test_gear_update(car):
@@ -82,10 +83,10 @@ def test_gear_update(car):
             Detail: test gear update function
             Return: Null"""
     try:
-        assert car.gear_update(20) == 1
-        m.write_exceptions_to_log("TEST GEAR UPDATE --- PASS !")
+        assert car.gear_update(200) == 1
+        m.write_exceptions_to_log("TEST GEAR UPDATE --- PASS ! ")
     except Exception as e:
-        m.write_exceptions_to_log("TEST GEAR UPDATE --- FAILED !", e)
+        m.write_exceptions_to_log("TEST GEAR UPDATE --- FAILED ! " + str(e))
 
     with pytest.raises(OverflowError):
         car.gear_update(200)
@@ -98,6 +99,6 @@ def test_fuel_charge(car):
             Return: Null"""
     try:
         assert car.fuel_charge() == 1
-        m.write_exceptions_to_log("TEST FUEL CHARGE --- PASS !")
+        m.write_exceptions_to_log("TEST FUEL CHARGE --- PASS ! ")
     except Exception as e:
-        m.write_exceptions_to_log("TEST FUEL CHARGE --- FAILED !", e)
+        m.write_exceptions_to_log("TEST FUEL CHARGE --- FAILED ! " + str(e))
