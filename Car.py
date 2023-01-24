@@ -39,33 +39,33 @@ class Car:
         try:
             self.m.open_file()
         except FileNotFoundError:
-            self.m.write_to_log("start *FileNotFoundError*", self.fuel, self.consumption_fuel, self.money, self.handbrake,
+            self.m.write_to_log(os.getenv('START_STATUS') + os.getenv('FILE_NOT_FOUND_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
                                 self.capacity_fuel, self.liter_price, self.distance, self.speed)
         self.gear = 0
         self.handbrake = True
-        self.m.write_to_log("start", self.fuel, self.consumption_fuel, self.money, self.handbrake,
+        self.m.write_to_log(os.getenv('START_STATUS'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
         try:
             self.drive()
             return 1
         except ValueError:
-            self.m.write_to_log("drive *ValueError*", self.fuel, self.consumption_fuel, self.money, self.handbrake,
+            self.m.write_to_log(os.getenv('DRIVE_STATUS') + " " + os.getenv('VALUE_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
                                 self.capacity_fuel, self.liter_price, self.distance, self.speed)
             return 0
         except OverflowError:
-            self.m.write_to_log("drive *OverflowError*", self.fuel, self.consumption_fuel, self.money, self.handbrake,
+            self.m.write_to_log(os.getenv('DRIVE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
                                 self.capacity_fuel, self.liter_price, self.distance, self.speed)
             try:
                 self.fuel_charge()
                 return 1
             except OverflowError:
-                self.m.write_to_log("fuel_charge *OverflowError*", self.fuel, self.consumption_fuel, self.money, self.handbrake,
+                self.m.write_to_log(os.getenv('FUEL_CHARGE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
                                     self.capacity_fuel, self.liter_price, self.distance, self.speed)
                 try:
                     self.stop()
                     return 0
                 except Exception:
-                    self.m.write_to_log("stop *Exception*", self.fuel, self.consumption_fuel, self.money, self.handbrake,
+                    self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
                                         self.capacity_fuel, self.liter_price, self.distance, self.speed)
                     self.close_file()
                     return 0
@@ -85,15 +85,15 @@ class Car:
             self.fuel -= calc_liter_to_drive
             ls_speed = self.speed.split(",")
             for i in ls_speed:
-                if i != 's':
+                if i != os.getenv('CHAR_STOP'):
                     try:
                         self.gear_update(int(i))
-                    except OverflowError:
-                        self.m.write_to_log("gear_update *OverflowError*", self.fuel, self.consumption_fuel, self.money,
+                    except OverflowError as of:
+                        self.m.write_to_log(os.getenv('GEAR_UPDATE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
                                             self.handbrake,
                                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
                     except ValueError:
-                        self.m.write_to_log("gear_update *ValueError*", self.fuel, self.consumption_fuel, self.money,
+                        self.m.write_to_log(os.getenv('GEAR_UPDATE_STATUS') + " " + os.getenv('VALUE_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
                                             self.handbrake,
                                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
                 else:
@@ -101,7 +101,7 @@ class Car:
                         self.stop()
                         break
                     except Exception:
-                        self.m.write_to_log("stop *Exception*", self.fuel, self.consumption_fuel, self.money,
+                        self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
                                             self.handbrake,
                                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
                         self.close_file()
@@ -111,10 +111,10 @@ class Car:
                 Created: 22.01.2023,
                 Detail: update the gear pear speed,
                 Return: Null"""
-        self.gear = round(speed // 20)
+        self.gear = round(speed // int(os.getenv('DISTANCE_BETWEEN_GEAR')))
         if not isinstance(self.gear, int):
             raise ValueError
-        elif self.gear > 6:
+        elif self.gear > int(os.getenv('NUMBERS_GEARS')):
             self.gear = 6
             raise OverflowError
         return 1
@@ -132,14 +132,14 @@ class Car:
                 self.start()
                 return 1
             except Exception:
-                self.m.write_to_log("start *Exception*", self.fuel, self.consumption_fuel, self.money,
+                self.m.write_to_log(os.getenv("START_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
                                     self.handbrake,
                                     self.capacity_fuel, self.liter_price, self.distance, self.speed)
                 try:
                     self.stop()
                     return 0
                 except Exception:
-                    self.m.write_to_log("stop *Exception*", self.fuel, self.consumption_fuel, self.money,
+                    self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
                                         self.handbrake,
                                         self.capacity_fuel, self.liter_price, self.distance, self.speed)
                     self.close_file()
@@ -154,7 +154,7 @@ class Car:
                 Return: Null"""
         self.gear = 0
         self.handbrake = False
-        self.m.write_to_log("stop", self.fuel, self.consumption_fuel, self.money, self.handbrake,
+        self.m.write_to_log(os.getenv("STOP_STATUS"), self.fuel, self.consumption_fuel, self.money, self.handbrake,
                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
         self.close_file()
         return 1
