@@ -2,19 +2,11 @@ import os
 from dotenv import load_dotenv
 
 import manage_log
+
 load_dotenv()
 
 
 class Car:
-    fuel = None
-    consumption_fuel = None
-    money = None
-    gear = None
-    handbrake = None
-    capacity_fuel = None
-    liter_price = None
-    distance = None
-    speed = None
     m = manage_log.Manage_log()
 
     def __init__(self):
@@ -39,7 +31,8 @@ class Car:
         try:
             self.m.open_file()
         except FileNotFoundError:
-            self.m.write_to_log(os.getenv('START_STATUS') + os.getenv('FILE_NOT_FOUND_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
+            self.m.write_to_log(os.getenv('START_STATUS') + os.getenv('FILE_NOT_FOUND_ERROR_EXCEPTION'), self.fuel,
+                                self.consumption_fuel, self.money, self.handbrake,
                                 self.capacity_fuel, self.liter_price, self.distance, self.speed)
         self.gear = 0
         self.handbrake = True
@@ -49,23 +42,27 @@ class Car:
             self.drive()
             return 1
         except ValueError:
-            self.m.write_to_log(os.getenv('DRIVE_STATUS') + " " + os.getenv('VALUE_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
+            self.m.write_to_log(os.getenv('DRIVE_STATUS') + " " + os.getenv('VALUE_ERROR_EXCEPTION'), self.fuel,
+                                self.consumption_fuel, self.money, self.handbrake,
                                 self.capacity_fuel, self.liter_price, self.distance, self.speed)
             return 0
         except OverflowError:
-            self.m.write_to_log(os.getenv('DRIVE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
+            self.m.write_to_log(os.getenv('DRIVE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel,
+                                self.consumption_fuel, self.money, self.handbrake,
                                 self.capacity_fuel, self.liter_price, self.distance, self.speed)
             try:
                 self.fuel_charge()
                 return 1
             except OverflowError:
-                self.m.write_to_log(os.getenv('FUEL_CHARGE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
+                self.m.write_to_log(os.getenv('FUEL_CHARGE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'),
+                                    self.fuel, self.consumption_fuel, self.money, self.handbrake,
                                     self.capacity_fuel, self.liter_price, self.distance, self.speed)
                 try:
                     self.stop()
                     return 0
                 except Exception:
-                    self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
+                    self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel,
+                                        self.consumption_fuel, self.money, self.handbrake,
                                         self.capacity_fuel, self.liter_price, self.distance, self.speed)
                     self.close_file()
                     return 0
@@ -75,25 +72,34 @@ class Car:
                 Created: 22.01.2023,
                 Detail: drive user if distance < fuel,
                 Return: Null"""
-        ls = self.consumption_fuel.split("/")
-        calc_liter_to_drive = int(self.distance / int(ls[1]))
-        if not isinstance(calc_liter_to_drive, int):
+        self.ls = self.consumption_fuel.split("/")
+        calc_liter_to_drive = int(self.distance / int(self.ls[1]))
+        if not isinstance(calc_liter_to_drive, int):  # if calc liters not int
             raise ValueError
-        elif calc_liter_to_drive > self.fuel:
+        elif calc_liter_to_drive > self.fuel and calc_liter_to_drive < self.capacity_fuel:  # if not full tank, parent send him to charge
             raise OverflowError
-        elif calc_liter_to_drive <= self.fuel:
+        elif calc_liter_to_drive > self.fuel and calc_liter_to_drive > self.capacity_fuel: # if yes full tank, drive usually
+            self.fuel -= self.capacity_fuel
+            self.distance -= (self.capacity_fuel * int(self.ls[1]))
+            self.stop()
+            self.start()
+        elif calc_liter_to_drive <= self.fuel:  # if user don't need charge
             self.fuel -= calc_liter_to_drive
+            self.distance -= (calc_liter_to_drive * int(self.ls[1]))
             ls_speed = self.speed.split(",")
             for i in ls_speed:
                 if i != os.getenv('CHAR_STOP'):
                     try:
                         self.gear_update(int(i))
-                    except OverflowError as of:
-                        self.m.write_to_log(os.getenv('GEAR_UPDATE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
-                                            self.handbrake,
-                                            self.capacity_fuel, self.liter_price, self.distance, self.speed)
+                    except OverflowError:
+                        self.m.write_to_log(
+                            os.getenv('GEAR_UPDATE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel,
+                            self.consumption_fuel, self.money,
+                            self.handbrake,
+                            self.capacity_fuel, self.liter_price, self.distance, self.speed)
                     except ValueError:
-                        self.m.write_to_log(os.getenv('GEAR_UPDATE_STATUS') + " " + os.getenv('VALUE_ERROR_EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
+                        self.m.write_to_log(os.getenv('GEAR_UPDATE_STATUS') + " " + os.getenv('VALUE_ERROR_EXCEPTION'),
+                                            self.fuel, self.consumption_fuel, self.money,
                                             self.handbrake,
                                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
                 else:
@@ -101,7 +107,8 @@ class Car:
                         self.stop()
                         break
                     except Exception:
-                        self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
+                        self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel,
+                                            self.consumption_fuel, self.money,
                                             self.handbrake,
                                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
                         self.close_file()
@@ -112,9 +119,9 @@ class Car:
                 Detail: update the gear pear speed,
                 Return: Null"""
         self.gear = round(speed // int(os.getenv('DISTANCE_BETWEEN_GEAR')))
-        if not isinstance(self.gear, int):
+        if not isinstance(self.gear, int):  # if num gear not int
             raise ValueError
-        elif self.gear > int(os.getenv('NUMBERS_GEARS')):
+        elif self.gear > int(os.getenv('NUMBERS_GEARS')):  # if user want to up from 6
             self.gear = 6
             raise OverflowError
         return 1
@@ -125,25 +132,32 @@ class Car:
                 Detail: charge full fuel car if user have money,
                 Return: Null"""
         liters_to_fuel = self.capacity_fuel - self.fuel
-        if liters_to_fuel * self.liter_price <= self.money:
+        if liters_to_fuel * self.liter_price <= self.money:  # charge car ful tank (if user have money)
             self.fuel += liters_to_fuel
             self.money -= liters_to_fuel * self.liter_price
             try:
                 self.start()
                 return 1
             except Exception:
-                self.m.write_to_log(os.getenv("START_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
+                self.m.write_to_log(os.getenv("START_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel,
+                                    self.consumption_fuel, self.money,
                                     self.handbrake,
                                     self.capacity_fuel, self.liter_price, self.distance, self.speed)
                 try:
                     self.stop()
                     return 0
                 except Exception:
-                    self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel, self.consumption_fuel, self.money,
+                    self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel,
+                                        self.consumption_fuel, self.money,
                                         self.handbrake,
                                         self.capacity_fuel, self.liter_price, self.distance, self.speed)
                     self.close_file()
                     return 0
+        elif liters_to_fuel * self.liter_price > self.money:  # charge car by money
+            self.fuel += self.money / int(self.ls[1])
+            self.money -= self.money
+            self.start()
+            return 1
         else:
             raise OverflowError
 
