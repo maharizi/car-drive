@@ -62,10 +62,13 @@ class Car:
                     return 0
                 except Exception:
                     self.m.write_to_log(os.getenv("STOP_STATUS") + " " + os.getenv('EXCEPTION'), self.fuel,
-                                        self.consumption_fuel, self.money, self.handbrake,
-                                        self.capacity_fuel, self.liter_price, self.distance, self.speed)
+                                self.consumption_fuel, self.money, self.handbrake,
+                                self.capacity_fuel, self.liter_price, self.distance, self.speed)
                     self.close_file()
                     return 0
+        except Exception:
+            self.m.write_to_log(os.getenv("DRIVE_STATUS") + " " + os.getenv('USER_NOT_HAVE_MONEY'), self.fuel, self.consumption_fuel, self.money, self.handbrake, self.capacity_fuel, self.liter_price, self.distance, self.speed)
+            self.stop()
 
     def drive(self):
         """Author: Maor Maharizi,
@@ -74,11 +77,19 @@ class Car:
                 Return: Null"""
         self.ls = self.consumption_fuel.split("/")
         calc_liter_to_drive = int(self.distance / int(self.ls[1]))
-        if not isinstance(calc_liter_to_drive, int):  # if calc liters not int
+        # if calc liters not int
+        if not isinstance(calc_liter_to_drive, int):
             raise ValueError
-        elif calc_liter_to_drive > self.fuel and calc_liter_to_drive < self.capacity_fuel:  # if not full tank, parent send him to charge
+        # if user don't have fuel to drive, user drive what he can and parent send him to charge
+        elif calc_liter_to_drive > self.fuel and calc_liter_to_drive <= self.capacity_fuel:
+            self.distance -= int((self.fuel * int(self.ls[1])))
+            self.fuel -= self.fuel
+            # if user need to drive and he don't have money
+            if self.money == 0:
+                raise Exception
             raise OverflowError
-        elif calc_liter_to_drive > self.fuel and calc_liter_to_drive > self.capacity_fuel: # if yes full tank, drive usually
+        # if user have fuel to drive, drive usually
+        elif calc_liter_to_drive > self.fuel and calc_liter_to_drive > self.capacity_fuel:
             self.fuel -= self.capacity_fuel
             self.distance -= (self.capacity_fuel * int(self.ls[1]))
             self.stop()
@@ -132,7 +143,8 @@ class Car:
                 Detail: charge full fuel car if user have money,
                 Return: Null"""
         liters_to_fuel = self.capacity_fuel - self.fuel
-        if liters_to_fuel * self.liter_price <= self.money:  # charge car ful tank (if user have money)
+        # charge car ful tank (if user have money)
+        if liters_to_fuel * self.liter_price <= self.money:
             self.fuel += liters_to_fuel
             self.money -= liters_to_fuel * self.liter_price
             try:
@@ -153,7 +165,8 @@ class Car:
                                         self.capacity_fuel, self.liter_price, self.distance, self.speed)
                     self.close_file()
                     return 0
-        elif liters_to_fuel * self.liter_price > self.money:  # charge car by money
+        # charge car by money
+        elif liters_to_fuel * self.liter_price > self.money:
             self.fuel += self.money / int(self.ls[1])
             self.money -= self.money
             self.start()
