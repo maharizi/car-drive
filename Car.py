@@ -47,14 +47,14 @@ class Car:
                                 self.capacity_fuel, self.liter_price, self.distance, self.speed)
             return 0
         except OverflowError:
-            self.m.write_to_log(os.getenv('DRIVE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel,
+            self.m.write_to_log(os.getenv('DRIVE_STATUS') + " NEED CHARGE " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel,
                                 self.consumption_fuel, self.money, self.handbrake,
                                 self.capacity_fuel, self.liter_price, self.distance, self.speed)
             try:
                 self.fuel_charge()
                 return 1
             except OverflowError:
-                self.m.write_to_log(os.getenv('FUEL_CHARGE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'),
+                self.m.write_to_log(os.getenv('FUEL_CHARGE_STATUS') + " NEED CHARGE " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'),
                                     self.fuel, self.consumption_fuel, self.money, self.handbrake,
                                     self.capacity_fuel, self.liter_price, self.distance, self.speed)
                 try:
@@ -94,7 +94,8 @@ class Car:
             self.distance -= (self.capacity_fuel * int(self.ls[1]))
             self.stop()
             self.start()
-        elif calc_liter_to_drive <= self.fuel:  # if user don't need charge
+        # if user don't need charge
+        elif calc_liter_to_drive <= self.fuel:
             self.fuel -= calc_liter_to_drive
             self.distance -= (calc_liter_to_drive * int(self.ls[1]))
             ls_speed = self.speed.split(",")
@@ -104,7 +105,7 @@ class Car:
                         self.gear_update(int(i))
                     except OverflowError:
                         self.m.write_to_log(
-                            os.getenv('GEAR_UPDATE_STATUS') + " " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel,
+                            os.getenv('GEAR_UPDATE_STATUS') + " GEAR YET 6 " + os.getenv('OVER_FLOW_ERROR_EXCEPTION'), self.fuel,
                             self.consumption_fuel, self.money,
                             self.handbrake,
                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
@@ -142,6 +143,14 @@ class Car:
                 Created: 22.01.2023,
                 Detail: charge full fuel car if user have money,
                 Return: Null"""
+        self.coffee_and_cake = int(os.getenv('COFFEE_AND_CAKE'))
+        self.high_distance = int(os.getenv('HIGH_DISTANCE'))
+        # if user have money and distance is high, he buy sale - Coffee and Cake
+        if self.money > self.coffee_and_cake and self.distance > self.high_distance:
+            self.money -= self.coffee_and_cake
+            self.m.write_to_log(os.getenv('FUEL_CHARGE_STATUS') + " " + os.getenv('TIME_OUT_ERROR_EXCEPTION'),
+                                self.fuel, self.consumption_fuel, self.money, self.handbrake,
+                                self.capacity_fuel, self.liter_price, self.distance, self.speed)
         liters_to_fuel = self.capacity_fuel - self.fuel
         # charge car ful tank (if user have money)
         if liters_to_fuel * self.liter_price <= self.money:

@@ -14479,3 +14479,116 @@ TEST DRIVE --- PASS ! --- 24/01/2023 21:05:02
  car start ! ---  26/01/2023 16:15:15 fuel:40.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
  car drive *USER NOT HAVE MONEY* ! ---  26/01/2023 16:15:15 fuel:0.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
  car stop ! ---  26/01/2023 16:15:15 fuel:0.0, consumption fuel:1/10, money:0, handbrake:False, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+TEST INIT FUEL --- PASS ! --- 26/01/2023 16:22:14 
+TEST INIT FUEL CONSUMPTION--- PASS ! --- 26/01/2023 16:22:14 
+TEST OPEN FILE --- PASS ! --- 26/01/2023 16:22:14 
+ car start ! ---  26/01/2023 16:22:14 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:14 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:14 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  26/01/2023 16:22:14 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:14 fuel:40.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  26/01/2023 16:22:14 fuel:0.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:14 fuel:0.0, consumption fuel:1/10, money:0, handbrake:False, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+TEST DRIVE --- PASS ! --- 26/01/2023 16:22:14 
+TEST GEAR UPDATE --- FAILED ! --- 26/01/2023 16:22:14 
+ car start ! ---  26/01/2023 16:22:14 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:14 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:14 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  26/01/2023 16:22:14 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:14 fuel:40.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  26/01/2023 16:22:14 fuel:0.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:14 fuel:0.0, consumption fuel:1/10, money:0, handbrake:False, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+TEST FUEL CHARGE --- PASS ! --- 26/01/2023 16:22:14 
+ car start ! ---  26/01/2023 16:22:22 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:22 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:22 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  26/01/2023 16:22:22 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:22 fuel:40.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  26/01/2023 16:22:22 fuel:0.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:22 fuel:0.0, consumption fuel:1/10, money:0, handbrake:False, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+TEST DRIVE --- PASS ! --- 26/01/2023 16:22:22 
+ car start ! ---  26/01/2023 16:22:49 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:49 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:49 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  26/01/2023 16:22:49 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:49 fuel:40.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  26/01/2023 16:22:49 fuel:0.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:49 fuel:0.0, consumption fuel:1/10, money:0, handbrake:False, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+TEST DRIVE --- PASS ! --- 26/01/2023 16:22:49 
+ car start ! ---  26/01/2023 16:22:49 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:49 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:49 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  26/01/2023 16:22:49 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  26/01/2023 16:22:49 fuel:40.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  26/01/2023 16:22:49 fuel:0.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+ car stop ! ---  26/01/2023 16:22:49 fuel:0.0, consumption fuel:1/10, money:0, handbrake:False, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+TEST FUEL CHARGE --- PASS ! --- 26/01/2023 16:22:49 
+TEST GEAR UPDATE --- PASS ! --- 26/01/2023 16:22:49 
+TEST INIT FUEL --- PASS ! --- 26/01/2023 16:22:49 
+TEST INIT FUEL CONSUMPTION --- PASS ! --- 26/01/2023 16:22:49 
+TEST INIT MONEY --- FAILED ! 400 != 500--- 26/01/2023 16:22:49 
+TEST OPEN FILE --- PASS ! --- 26/01/2023 16:22:49 
+ car start ! ---  28/01/2023 20:23:28 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:23:28 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:23:28 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  28/01/2023 20:23:28 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  28/01/2023 20:23:28 fuel:0, consumption fuel:1/10, money:380, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  28/01/2023 20:23:28 fuel:0, consumption fuel:1/10, money:380, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+TEST DRIVE --- FAILED ! None != 1--- 28/01/2023 20:23:28 
+TEST FUEL CHARGE --- FAILED ! exceptions must derive from BaseException--- 28/01/2023 20:23:28 
+TEST GEAR UPDATE --- PASS ! --- 28/01/2023 20:23:28 
+TEST INIT FUEL --- PASS ! --- 28/01/2023 20:23:28 
+TEST INIT FUEL CONSUMPTION --- PASS ! --- 28/01/2023 20:23:28 
+TEST INIT MONEY --- FAILED ! 400 != 500--- 28/01/2023 20:23:28 
+TEST OPEN FILE --- PASS ! --- 28/01/2023 20:23:28 
+ car start ! ---  28/01/2023 20:23:40 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:23:40 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:23:40 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  28/01/2023 20:23:40 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  28/01/2023 20:23:40 fuel:0, consumption fuel:1/10, money:380, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  28/01/2023 20:23:40 fuel:0, consumption fuel:1/10, money:380, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:24:59 fuel:50, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:24:59 fuel:0, consumption fuel:1/10, money:4000, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:24:59 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  28/01/2023 20:24:59 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  28/01/2023 20:24:59 fuel:0, consumption fuel:1/10, money:3980, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  28/01/2023 20:24:59 fuel:0, consumption fuel:1/10, money:3980, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:35:13 fuel:50, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:35:13 fuel:0, consumption fuel:1/10, money:4000, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:35:13 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  28/01/2023 20:35:13 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  28/01/2023 20:35:13 fuel:0, consumption fuel:1/10, money:3980, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  28/01/2023 20:35:13 fuel:0, consumption fuel:1/10, money:3980, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:43:48 fuel:50, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:43:48 fuel:0, consumption fuel:1/10, money:4000, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:43:48 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  28/01/2023 20:43:48 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car fuel charge *Coffee and Cake break* ! ---  28/01/2023 20:43:48 fuel:0, consumption fuel:1/10, money:3980, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:44:02 fuel:50, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:44:02 fuel:0, consumption fuel:1/10, money:4000, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:44:02 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  28/01/2023 20:44:02 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car fuel charge *Coffee and Cake break* ! ---  28/01/2023 20:44:02 fuel:0, consumption fuel:1/10, money:3980, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:51:25 fuel:50, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:51:25 fuel:0, consumption fuel:1/10, money:4000, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:51:25 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  28/01/2023 20:51:25 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:51:25 fuel:50, consumption fuel:1/10, money:3500, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  28/01/2023 20:51:25 fuel:0, consumption fuel:1/10, money:3500, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+ car start ! ---  28/01/2023 20:53:03 fuel:50, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:53:03 fuel:0, consumption fuel:1/10, money:4000, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:53:03 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *Over Flow Error* ! ---  28/01/2023 20:53:03 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car fuel charge *Coffee and Cake break* ! ---  28/01/2023 20:53:03 fuel:0, consumption fuel:1/10, money:3980, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:53:03 fuel:50, consumption fuel:1/10, money:3480, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  28/01/2023 20:53:03 fuel:0, consumption fuel:1/10, money:3480, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+ car start ! ---  28/01/2023 20:53:58 fuel:50, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:53:58 fuel:0, consumption fuel:1/10, money:4000, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:53:58 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:56:29 fuel:50, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  28/01/2023 20:56:29 fuel:0, consumption fuel:1/10, money:4000, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:56:29 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive NEED CHARGE *Over Flow Error* ! ---  28/01/2023 20:56:29 fuel:0, consumption fuel:1/10, money:4000, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car fuel charge *Coffee and Cake break* ! ---  28/01/2023 20:56:29 fuel:0, consumption fuel:1/10, money:3980, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  28/01/2023 20:56:29 fuel:50, consumption fuel:1/10, money:3480, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  28/01/2023 20:56:29 fuel:0, consumption fuel:1/10, money:3480, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
