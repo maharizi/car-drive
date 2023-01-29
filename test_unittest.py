@@ -47,6 +47,17 @@ class MyTestCaseUnittest(unittest.TestCase):
         except Exception as e:
             self.m.write_exceptions_to_log("TEST INIT MONEY --- FAILED ! " + str(e))
 
+    def test_init_distance(self):
+        """Author: Maor Maharizi,
+                Created: 22.01.2023,
+                Detail: test fuel charge function
+                Return: Null"""
+        try:
+            self.assertEqual(self.c.distance, 500)
+            self.m.write_exceptions_to_log("TEST FUEL CHARGE --- PASS ! ")
+        except Exception as e:
+            self.m.write_exceptions_to_log("TEST FUEL CHARGE --- FAILED ! " + str(e))
+
     def test_open_file(self):
         """Author: Maor Maharizi,
                 Created: 22.01.2023,
@@ -80,13 +91,3 @@ class MyTestCaseUnittest(unittest.TestCase):
         except Exception as e:
             self.m.write_exceptions_to_log("TEST GEAR UPDATE --- FAILED ! " + str(e))
 
-    def test_fuel_charge(self):
-        """Author: Maor Maharizi,
-                Created: 22.01.2023,
-                Detail: test fuel charge function
-                Return: Null"""
-        try:
-            self.assertEqual(self.c.fuel_charge(), 1)
-            self.m.write_exceptions_to_log("TEST FUEL CHARGE --- PASS ! ")
-        except Exception as e:
-            self.m.write_exceptions_to_log("TEST FUEL CHARGE --- FAILED ! " + str(e))

@@ -14592,3 +14592,97 @@ TEST OPEN FILE --- PASS ! --- 28/01/2023 20:23:28
  car fuel charge *Coffee and Cake break* ! ---  28/01/2023 20:56:29 fuel:0, consumption fuel:1/10, money:3980, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
  car start ! ---  28/01/2023 20:56:29 fuel:50, consumption fuel:1/10, money:3480, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
  car stop ! ---  28/01/2023 20:56:29 fuel:0, consumption fuel:1/10, money:3480, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+ car start ! ---  29/01/2023 14:55:27 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:1000, speed:40,80,s
+ car stop ! ---  29/01/2023 14:55:27 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  29/01/2023 14:55:27 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive NEED CHARGE *Over Flow Error* ! ---  29/01/2023 14:55:27 fuel:0, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car fuel charge *Coffee and Cake break* ! ---  29/01/2023 14:55:27 fuel:0, consumption fuel:1/10, money:380, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car start ! ---  29/01/2023 14:55:27 fuel:38.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car drive *USER NOT HAVE MONEY* ! ---  29/01/2023 14:55:27 fuel:0.0, consumption fuel:1/10, money:0, handbrake:True, capacity fuel:50, liter_price:10, distance:120, speed:40,80,s
+ car stop ! ---  29/01/2023 14:55:27 fuel:0.0, consumption fuel:1/10, money:0, handbrake:False, capacity fuel:50, liter_price:10, distance:120, speed:40,80,s
+ car start ! ---  29/01/2023 14:57:46 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:100, speed:40,80,s
+ car stop ! ---  29/01/2023 14:57:46 fuel:40, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+ car start ! ---  29/01/2023 14:58:04 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 14:58:04 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST INIT FUEL --- PASS ! --- 29/01/2023 14:58:37 
+TEST INIT FUEL CONSUMPTION--- PASS ! --- 29/01/2023 14:58:37 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 14:58:37 
+ car start ! ---  29/01/2023 14:58:37 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 14:58:37 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 14:58:37 
+TEST GEAR UPDATE --- FAILED ! --- 29/01/2023 14:58:37 
+TEST FUEL CHARGE --- FAILED ! I/O operation on closed file.--- 29/01/2023 14:58:37 
+TEST INIT FUEL --- PASS ! --- 29/01/2023 15:18:44 
+TEST INIT FUEL CONSUMPTION--- PASS ! --- 29/01/2023 15:18:44 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 15:18:44 
+ car start ! ---  29/01/2023 15:18:44 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 15:18:44 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 15:18:44 
+TEST GEAR UPDATE --- FAILED ! --- 29/01/2023 15:18:44 
+TEST FUEL CHARGE --- FAILED ! I/O operation on closed file.--- 29/01/2023 15:18:44 
+TEST FUEL CHARGE --- FAILED ! 'NoneType' object has no attribute 'write'--- 29/01/2023 15:20:09 
+TEST GEAR UPDATE --- FAILED ! --- 29/01/2023 15:22:13 
+TEST GEAR UPDATE --- FAILED ! --- 29/01/2023 15:23:24 
+TEST GEAR UPDATE --- FAILED ! --- 29/01/2023 15:23:49 
+TEST GEAR UPDATE --- FAILED ! --- 29/01/2023 15:24:31 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:25:20 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:25:49 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:25:59 
+TEST GEAR UPDATE --- FAILED ! --- 29/01/2023 15:26:09 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:26:24 
+TEST FUEL CHARGE --- FAILED ! 'NoneType' object has no attribute 'write'--- 29/01/2023 15:27:16 
+TEST INIT FUEL --- PASS ! --- 29/01/2023 15:27:50 
+TEST INIT FUEL CONSUMPTION--- PASS ! --- 29/01/2023 15:27:50 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 15:27:50 
+ car start ! ---  29/01/2023 15:27:50 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 15:27:50 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 15:27:50 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:27:50 
+TEST FUEL CHARGE --- FAILED ! I/O operation on closed file.--- 29/01/2023 15:27:50 
+TEST INIT FUEL --- PASS ! --- 29/01/2023 15:29:34 
+TEST INIT FUEL CONSUMPTION--- PASS ! --- 29/01/2023 15:29:34 
+TEST INIT MONEY--- FAILED ! assert 400 == 500
+ +  where 400 = <Car.Car object at 0x0000024D6D5D7AF0>.money--- 29/01/2023 15:29:34 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 15:29:34 
+ car start ! ---  29/01/2023 15:29:34 fuel:50, consumption fuel:1/10, money:400, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 15:29:34 fuel:0, consumption fuel:1/10, money:400, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 15:29:34 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:29:34 
+TEST INIT FUEL --- PASS ! --- 29/01/2023 15:30:29 
+TEST INIT FUEL CONSUMPTION--- PASS ! --- 29/01/2023 15:30:29 
+TEST INIT MONEY--- PASS ! --- 29/01/2023 15:30:29 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 15:30:29 
+ car start ! ---  29/01/2023 15:30:29 fuel:50, consumption fuel:1/10, money:500, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 15:30:29 fuel:0, consumption fuel:1/10, money:500, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 15:30:29 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:30:29 
+ car start ! ---  29/01/2023 15:31:24 fuel:50, consumption fuel:1/10, money:500, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 15:31:24 fuel:0, consumption fuel:1/10, money:500, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 15:31:24 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 15:34:42 
+TEST INIT FUEL --- PASS ! --- 29/01/2023 15:35:17 
+TEST INIT FUEL CONSUMPTION--- PASS ! --- 29/01/2023 15:35:17 
+TEST INIT MONEY--- PASS ! --- 29/01/2023 15:35:17 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 15:35:17 
+ car start ! ---  29/01/2023 15:35:17 fuel:50, consumption fuel:1/10, money:500, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 15:35:17 fuel:0, consumption fuel:1/10, money:500, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 15:35:17 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:35:17 
+ car start ! ---  29/01/2023 15:36:22 fuel:50, consumption fuel:1/10, money:500, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 15:36:22 fuel:0, consumption fuel:1/10, money:500, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 15:36:22 
+TEST FUEL CHARGE --- FAILED ! I/O operation on closed file.--- 29/01/2023 15:36:22 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:36:22 
+TEST INIT FUEL --- PASS ! --- 29/01/2023 15:36:22 
+TEST INIT FUEL CONSUMPTION --- PASS ! --- 29/01/2023 15:36:22 
+TEST INIT MONEY --- PASS ! --- 29/01/2023 15:36:22 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 15:36:22 
+ car start ! ---  29/01/2023 15:39:08 fuel:50, consumption fuel:1/10, money:500, handbrake:True, capacity fuel:50, liter_price:10, distance:500, speed:40,80,s
+ car stop ! ---  29/01/2023 15:39:08 fuel:0, consumption fuel:1/10, money:500, handbrake:False, capacity fuel:50, liter_price:10, distance:0, speed:40,80,s
+TEST DRIVE --- PASS ! --- 29/01/2023 15:39:08 
+TEST GEAR UPDATE --- PASS ! --- 29/01/2023 15:39:08 
+TEST FUEL CHARGE --- PASS ! --- 29/01/2023 15:39:08 
+TEST INIT FUEL --- PASS ! --- 29/01/2023 15:39:08 
+TEST INIT FUEL CONSUMPTION --- PASS ! --- 29/01/2023 15:39:08 
+TEST INIT MONEY --- PASS ! --- 29/01/2023 15:39:08 
+TEST OPEN FILE --- PASS ! --- 29/01/2023 15:39:08 

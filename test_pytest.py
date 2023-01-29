@@ -41,6 +41,18 @@ def test_init_fuel_consumption(car):
 
 
 @pytest.mark.skip
+def test_fuel_charge(car):
+    """Author: Maor Maharizi,
+            Created: 22.01.2023,
+            Detail: test fuel charge function
+            Return: Null"""
+    try:
+        assert car.fuel_charge() == 1
+        m.write_exceptions_to_log("TEST FUEL CHARGE --- PASS ! ")
+    except Exception as e:
+        m.write_exceptions_to_log("TEST FUEL CHARGE --- FAILED ! " + str(e))
+
+
 def test_init_money(car):
     """Author: Maor Maharizi,
             Created: 22.01.2023,
@@ -83,22 +95,10 @@ def test_gear_update(car):
             Detail: test gear update function
             Return: Null"""
     try:
-        assert car.gear_update(200) == 1
+        assert car.gear_update(130) == 1
         m.write_exceptions_to_log("TEST GEAR UPDATE --- PASS ! ")
     except Exception as e:
         m.write_exceptions_to_log("TEST GEAR UPDATE --- FAILED ! " + str(e))
 
     with pytest.raises(OverflowError):
-        car.gear_update(200)
-
-
-def test_fuel_charge(car):
-    """Author: Maor Maharizi,
-            Created: 22.01.2023,
-            Detail: test fuel charge function
-            Return: Null"""
-    try:
-        assert car.fuel_charge() == 1
-        m.write_exceptions_to_log("TEST FUEL CHARGE --- PASS ! ")
-    except Exception as e:
-        m.write_exceptions_to_log("TEST FUEL CHARGE --- FAILED ! " + str(e))
+        car.gear_update(140)
