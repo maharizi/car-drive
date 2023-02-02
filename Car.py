@@ -39,8 +39,13 @@ class Car:
         self.m.write_to_log(os.getenv('START_STATUS'), self.fuel, self.consumption_fuel, self.money, self.handbrake,
                             self.capacity_fuel, self.liter_price, self.distance, self.speed)
         try:
-            self.drive()
-            return 1
+            if (self.fuel <= self.capacity_fuel):
+                self.drive()
+                return 1
+            else:
+                self.m.write_to_log(os.getenv('START_STATUS') + os.getenv('FUEL_LARGE_THEN_FUEL_CAPACITY'), self.fuel, self.consumption_fuel, self.money,
+                                    self.handbrake,
+                                    self.capacity_fuel, self.liter_price, self.distance, self.speed)
         except ValueError:
             self.m.write_to_log(os.getenv('DRIVE_STATUS') + " " + os.getenv('VALUE_ERROR_EXCEPTION'), self.fuel,
                                 self.consumption_fuel, self.money, self.handbrake,
@@ -146,7 +151,7 @@ class Car:
         self.coffee_and_cake = int(os.getenv('COFFEE_AND_CAKE'))
         self.high_distance = int(os.getenv('HIGH_DISTANCE'))
         # if user have money and distance is high, he buy sale - Coffee and Cake
-        if self.money > self.coffee_and_cake and self.distance > self.high_distance:
+        if self.money > self.coffee_and_cake and self.distance >= self.high_distance:
             self.money -= self.coffee_and_cake
             self.m.write_to_log(os.getenv('FUEL_CHARGE_STATUS') + " " + os.getenv('TIME_OUT_ERROR_EXCEPTION'),
                                 self.fuel, self.consumption_fuel, self.money, self.handbrake,
